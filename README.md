@@ -24,6 +24,7 @@ var post = {
 };
 
 var newcanonicalpost = canonical(post);
+Object.is(post, newcanonicalpost); //false
 var shasum = require('crypto').createHash('sha512');
 shasum.update(JSON.stringify(newcanonicalpost));
 var version_id = 'sha512t256-' + shasum.digest('hex').substr(0,64);
