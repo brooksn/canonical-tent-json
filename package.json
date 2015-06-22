@@ -1,6 +1,6 @@
 {
   "name": "canonical-tent-json",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Generate canonical JSON for Tent 0.3 posts",
   "main": "index.js",
   "repository": {
