@@ -22,6 +22,11 @@ var canonicalPostJSON = function(originalpost){
     delete post.version.received_at;
     delete post.version.id;
   }
+  if (post.mentions && Array.isArray(post.mentions)) {
+    for (var m in post.mentions) {
+      if (post.mentions[m].public === false) post.mentions.splice(m,1);
+    }
+  }
 
   var isObject = function(object){
     return Object.prototype.toString.call(object) === '[object Object]';
