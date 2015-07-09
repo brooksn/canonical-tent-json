@@ -2,6 +2,7 @@
 Generate canonical JSON for Tent posts. For [Tent 0.3](https://tent.io/docs/posts#canonical-post-json).
 
 [![npm version](https://badge.fury.io/js/canonical-tent-json.svg)](http://badge.fury.io/js/canonical-tent-json)
+[![Build Status](https://travis-ci.org/brooksn/canonical-tent-json.svg)](https://travis-ci.org/brooksn/canonical-tent-json)
 
 ## Installation
 

@@ -1,3 +1,4 @@
+var versionID = require('./version-id.js');
 var canonicalPostJSON = function(originalpost){
   var post = JSON.parse(JSON.stringify(originalpost));
 /**
@@ -25,6 +26,26 @@ var canonicalPostJSON = function(originalpost){
   if (post.mentions && Array.isArray(post.mentions)) {
     for (var m in post.mentions) {
       if (post.mentions[m].public === false) post.mentions.splice(m,1);
+      if (post.mentions[m].original_entity) {
+        post.mentions[m].entity = post.mentions[m].original_entity;
+        delete post.mentions[m].original_entity;
+      }
+    }
+  }
+  if (post.refs && Array.isArray(post.refs)) {
+    for (var r in post.refs) {
+      if (post.refs[r].original_entity) {
+        post.refs[r].entity = post.refs[r].original_entity;
+        delete post.refs[r].original_entity;
+      }
+    }
+  }
+  if (post.version && post.version.parents && Array.isArray(post.version.parents)) {
+    for (var p in post.version.parents) {
+      if (post.version.parents[p].original_entity) {
+        post.version.parents[p].entity = post.version.parents[p].original_entity;
+        delete post.version.parents[p].original_entity;
+      }
     }
   }
 
@@ -72,6 +93,7 @@ var canonicalPostJSON = function(originalpost){
     return;
   };
   canonical = keySort(post);
+  canonical.versionID = versionID;
   return canonical;
 };
 

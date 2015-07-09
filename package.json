@@ -1,8 +1,11 @@
 {
   "name": "canonical-tent-json",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Generate canonical JSON for Tent 0.3 posts",
   "main": "index.js",
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brooksn/canonical-tent-json.git"
@@ -16,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/brooksn/canonical-tent-json/issues"
   },
-  "homepage": "https://github.com/brooksn/canonical-tent-json#readme"
+  "homepage": "https://github.com/brooksn/canonical-tent-json#readme",
+  "devDependencies": {
+    "tape": "^4.0.0"
+  }
 }
