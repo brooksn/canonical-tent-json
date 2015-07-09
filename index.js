@@ -13,7 +13,11 @@ var canonicalPostJSON = function(originalpost){
   * as the post and entity members of a version.parents, mentions, and refs array element
   * when they refer to the identifier or entity of the post that contains them.
 **/
-
+  var isInt = Number.isInteger || function(value) {
+      return typeof value === "number" && 
+             isFinite(value) && 
+             Math.floor(value) === value;
+  };
   if (post.original_entity) post.entity = post.original_entity;
   delete post.original_entity;
   delete post.permissions;
@@ -66,7 +70,7 @@ var canonicalPostJSON = function(originalpost){
 
     for (var i=0; i<keys.length; i++){
       var child = null;
-      if (typeof object[keys[i]] === 'number' && Number.isInteger(object[keys[i]])) {
+      if (typeof object[keys[i]] === 'number' && isInt(object[keys[i]])) {
         freshObject[keys[i]] = object[keys[i]];
       } else if (isObject(object[keys[i]])) {
         child = keySort(object[keys[i]]);
