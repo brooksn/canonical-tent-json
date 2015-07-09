@@ -27,5 +27,5 @@ var post = {
 var newcanonicalpost = canonical(post);
 Object.is(post, newcanonicalpost); //false
 var version_id = newcanonicalpost.versionID();
-//sha512t256-e48360a724ccbbebea46e44a9836fe304811f4aaca9ab214bd56ec89e6ed854d
+//sha512t256-8c71c9113e53a23eaf1a7ac763e8759f2aa88cb73d50564a6c0ba46263e851d1
 ```
