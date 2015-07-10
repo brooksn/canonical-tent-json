@@ -34,6 +34,10 @@ var canonicalPostJSON = function(originalpost){
         post.mentions[m].entity = post.mentions[m].original_entity;
         delete post.mentions[m].original_entity;
       }
+      if (post.mentions[m].entity && post.mentions[m].entity === post.entity) {
+        delete post.mentions[m].entity;
+        if (post.mentions[m].post && post.mentions[m].post === post.id) delete post.mentions[m].post;
+      }
     }
   }
   if (post.refs && Array.isArray(post.refs)) {
@@ -42,6 +46,10 @@ var canonicalPostJSON = function(originalpost){
         post.refs[r].entity = post.refs[r].original_entity;
         delete post.refs[r].original_entity;
       }
+      if (post.refs[r].entity && post.refs[r].entity === post.entity) {
+        delete post.refs[r].entity;
+        if (post.refs[r].post && post.refs[r].post === post.id) delete post.refs[r].post;
+      }
     }
   }
   if (post.version && post.version.parents && Array.isArray(post.version.parents)) {
@@ -49,6 +57,10 @@ var canonicalPostJSON = function(originalpost){
       if (post.version.parents[p].original_entity) {
         post.version.parents[p].entity = post.version.parents[p].original_entity;
         delete post.version.parents[p].original_entity;
+      }
+      if (post.version.parents[p].entity && post.version.parents[p].entity === post.entity) {
+        delete post.version.parents[p].entity;
+        if (post.version.parents[p].post && post.version.parents[p].post === post.id) delete post.version.parents[p].post;
       }
     }
   }
@@ -97,7 +109,7 @@ var canonicalPostJSON = function(originalpost){
     return;
   };
   canonical = keySort(post);
-  canonical.versionID = versionID;
+  if (canonical) canonical.versionID = versionID;
   return canonical;
 };
 
